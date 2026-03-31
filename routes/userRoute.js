@@ -84,10 +84,11 @@ router.post("/login",async(req,res)=>{
 
 
 router.get("/profile",protect,async(req,res)=>{
-    // const cartCount=await Cart.findOne({user:req?.user?._id});
-    // console.log(cartCount);
-    
-        res.json(req.user)
+    const cartCount=await Cart.findOne({user:req?.user?._id});
+    console.log(cartCount);
+      
+      
+        res.json({user:req.user,cartCount:cartCount?.products?.length})
 })
 
 
